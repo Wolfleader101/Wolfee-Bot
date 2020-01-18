@@ -4,8 +4,11 @@
   "description": "My personal twitter bot",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js"
   },
   "author": "Wolfleader101",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "twit": "^2.2.11"
+  }
 }
