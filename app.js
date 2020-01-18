@@ -8,7 +8,7 @@ console.log("=     STARTING Wolfee Bot    =");
 console.log("=                            =");
 console.log("==============================");
 const params = {
-    q:'#100DaysOfCode OR #Nodejs OR #GameDev OR #100DaysOfCode OR #Programming OR #c++ OR #C# OR #Unity OR #UnrealEngine OR #Coding OR #JS OR #Javascript',
+    q:'#100DaysOfCode OR #Nodejs OR #GameDev OR #100DaysOfCode OR #Programming OR #c++ OR #C# OR #Unity OR #UnrealEngine OR #Coding OR #JS OR #Javascript OR #WebDev',
     count: 10,
     result_type: 'popular',
     lang: 'en' 
@@ -18,7 +18,7 @@ function retweet() {
     searchTweets(params);
     
 }
-setInterval(retweet, 10000);
+setInterval(retweet, 600000);
 
 function searchTweets(params) {
     T.get('search/tweets', params, (err, data, response) => {
@@ -38,7 +38,6 @@ function searchTweets(params) {
 function postTweet(retweetID) {
     T.post('statuses/retweet/:id', {id: retweetID},(err, data, response) => {
         console.log(data);
-        
         if (response) {
             console.log("Retweeted tweet: " + retweetID);
         }
