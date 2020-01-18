@@ -1,7 +1,11 @@
+const config = require('./config');
+const twit = require('twit');
+const T = new twit(config);
+
 module.exports = (_TIME) => {
     console.log("Starting up Retweet Script...");
     console.log("=================================================================================================");
-    console.log("**Tweets are set to retweet every 10 Minutes. This can be changed in the _TIME Function in app.js");
+    console.log("**Retweets are set to retweet every 10 Minutes. This can be changed in the _TIME Function in app.js**");
     console.log("=================================================================================================");
     
     
@@ -9,7 +13,7 @@ module.exports = (_TIME) => {
         const params = {
             q:'#100DaysOfCode OR #Nodejs OR #GameDev OR #100DaysOfCode OR #Programming OR #c++ OR #C# OR #Unity OR #UnrealEngine OR #Coding OR #JS OR #Javascript OR #WebDev',
             count: 10,
-            result_type: 'popular',
+            result_type: 'recent',
             lang: 'en' 
         }
         
