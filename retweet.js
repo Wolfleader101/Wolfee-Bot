@@ -2,11 +2,13 @@ const config = require('./config');
 const twit = require('twit');
 const T = new twit(config);
 
+const chalk = require('chalk');
+
 module.exports = (_TIME) => {
-    console.log("Starting up Retweet Script...");
-    console.log("=================================================================================================");
-    console.log("**Retweets are set to retweet every 10 Minutes. This can be changed in the _TIME Function in app.js**");
-    console.log("=================================================================================================");
+    console.log(chalk.red.bold.underline("\nStarting up Retweet Script..."));
+    console.log(chalk.blue.bgBlue("================================================================================================="));
+    console.log(chalk.yellow.bold("Retweets are set to retweet every 10 Minutes. This can be changed in the _TIME variable in app.js"));
+    console.log(chalk.blue.bgBlue("================================================================================================="))
     
     
     // START OF SCRIPT

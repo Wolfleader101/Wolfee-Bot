@@ -6,10 +6,11 @@ const T = new twit(config);
 var minutes = 10;
 _TIME = Math.floor(minutes * 60000);
 
-console.log("==============================");
-console.log("=                            =");
-console.log("=     STARTING Wolfee Bot    =");
-console.log("=                            =");
-console.log("==============================");
+const chalk = require('chalk');
+console.log(chalk.green("=============================="));
+console.log(chalk.green("=                            ="));
+console.log(chalk.green("=    "),chalk.magenta("STARTING Wolfee Bot"), chalk.green("   ="));
+console.log(chalk.green("=                            ="));
+console.log(chalk.green("=============================="));
 
 retweet(_TIME);
