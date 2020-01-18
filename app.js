@@ -8,7 +8,7 @@ console.log("=     STARTING Wolfee Bot    =");
 console.log("=                            =");
 console.log("==============================");
 const params = {
-    q:'#100DaysOfCode, #Nodejs, #GameDev, #100DaysOfCode, #Programming, #c++, #C#, #Unity, #UnrealEngine, #Coding, #JS, #Javascript',
+    q:'#100DaysOfCode OR #Nodejs OR #GameDev OR #100DaysOfCode OR #Programming OR #c++ OR #C# OR #Unity OR #UnrealEngine OR #Coding OR #JS OR #Javascript',
     count: 10,
     result_type: 'popular',
     lang: 'en' 
