@@ -40,7 +40,6 @@ var recent = (_TIME_RECENT) => {
         T.post('statuses/retweet/:id', {
             id: retweetID
         }, (err, data, response) => {
-            console.log(data);
             if (response) {
                 console.log("Retweeted tweet: " + retweetID);
             }
@@ -87,7 +86,6 @@ var popular = (_TIME_POPULAR) => {
         T.post('statuses/retweet/:id', {
             id: retweetID
         }, (err, data, response) => {
-            console.log(data);
             if (response) {
                 console.log("Retweeted tweet: " + retweetID);
             }
