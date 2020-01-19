@@ -37,6 +37,8 @@ var recent = (_TIME_RECENT) => {
     }
 
     function postTweet(retweetID) {
+        let Passcounter = 0;
+        let errCounter = 0;
         T.post('statuses/retweet/:id', {
             id: retweetID
         }, (err, data, response) => {
@@ -48,6 +50,11 @@ var recent = (_TIME_RECENT) => {
 
             }
         });
+        console.log(chalk.red("====================================================="));
+        console.log(chalk.green(`Retweeted a total of: ${Passcounter} tweets!!!`));
+        console.log(chalk.yellow(`Failed to retweet ${errCounter} tweets. Most likely already tweeted them`));
+        
+        console.log(chalk.red("====================================================="));
     }
 };
 var popular = (_TIME_POPULAR) => {
@@ -83,17 +90,26 @@ var popular = (_TIME_POPULAR) => {
     }
 
     function postTweet(retweetID) {
+        let Passcounter = 0;
+        let errCounter = 0;
         T.post('statuses/retweet/:id', {
             id: retweetID
         }, (err, data, response) => {
             if (response) {
+                counter++;
                 console.log("Retweeted tweet: " + retweetID);
             }
             if (err) {
+                errCounter++;
                 console.log("An error occured when trying to retweet (The tweet probably already exsists)");
 
             }
         });
+        console.log(chalk.red("====================================================="));
+        console.log(chalk.green(`Retweeted a total of: ${Passcounter} tweets!!!`));
+        console.log(chalk.yellow(`Failed to retweet ${errCounter} tweets. Most likely already tweeted them`));
+        
+        console.log(chalk.red("====================================================="));
     }
 };
 
