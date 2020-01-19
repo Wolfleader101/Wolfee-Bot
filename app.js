@@ -14,7 +14,7 @@ const chalk = require('chalk');
 console.log(chalk.green("=============================="));
 console.log(chalk.green("=                            ="));
 console.log(chalk.green("=    "),chalk.magenta("STARTING Wolfee Bot"), chalk.green("   ="));
-console.log(chalk.green("=                            ="));
+console.log(chalk.green("=          "),chalk.magenta("V0.2.0"), chalk.green("          ="));
 console.log(chalk.green("=============================="));
 
         /* IGNORE EVERYTHING BELOW THIS LINE */

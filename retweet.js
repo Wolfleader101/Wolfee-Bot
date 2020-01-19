@@ -53,7 +53,6 @@ var recent = (_TIME_RECENT) => {
         console.log(chalk.red("====================================================="));
         console.log(chalk.green(`Retweeted a total of: ${Passcounter} tweets!!!`));
         console.log(chalk.yellow(`Failed to retweet ${errCounter} tweets. Most likely already tweeted them`));
-        
         console.log(chalk.red("====================================================="));
     }
 };
@@ -108,7 +107,6 @@ var popular = (_TIME_POPULAR) => {
         console.log(chalk.red("====================================================="));
         console.log(chalk.green(`Retweeted a total of: ${Passcounter} tweets!!!`));
         console.log(chalk.yellow(`Failed to retweet ${errCounter} tweets. Most likely already tweeted them`));
-        
         console.log(chalk.red("====================================================="));
     }
 };
@@ -117,7 +115,7 @@ module.exports = {
     retweet: (_TIME_RECENT, _TIME_POPULAR) => {
         console.log(chalk.red.bold.underline("\nStarting up Retweet Script..."));
         console.log(chalk.blue.bgBlue("================================================================================================="));
-        console.log(chalk.yellow.bold("Retweets are set to retweet popular tweets every 30 Minutes and recent tweets every 10 Minutes.\n  This can be changed in the _TIME variables in app.js"));
+        console.log(chalk.yellow.bold("Retweets are set to retweet popular tweets every 30 Minutes and recent tweets every 10 Minutes.\n               This can be changed in the _TIME variables in app.js"));
         console.log(chalk.blue.bgBlue("================================================================================================="));
         recent(_TIME_RECENT);
         popular(_TIME_POPULAR);
