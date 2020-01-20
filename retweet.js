@@ -35,25 +35,26 @@ var recent = (_TIME_RECENT) => {
             }
         });
     }
-
+    //TODO add sum of counters in another function that runs after the loop.
     function postTweet(retweetID) {
         let Passcounter = 0;
         let errCounter = 0;
         T.post('statuses/retweet/:id', {
             id: retweetID
         }, (err, data, response) => {
-            if (response) {
+            if (err) {
+                ++errCounter;
+                console.log("An error occured when trying to retweet (The tweet probably already exsists)");
+            } else if (response) {
+                ++Passcounter;
                 console.log("Retweeted tweet: " + retweetID);
             }
-            if (err) {
-                console.log("An error occured when trying to retweet (The tweet probably already exsists)");
-
-            }
+            console.log(chalk.red("====================================================="));
+            console.log(chalk.green(`Retweeted a total of: ${Passcounter} tweets!!!`));
+            console.log(chalk.yellow(`Failed to retweet ${errCounter} tweets. Most likely already tweeted them`));
+            console.log(chalk.red("====================================================="));
         });
-        console.log(chalk.red("====================================================="));
-        console.log(chalk.green(`Retweeted a total of: ${Passcounter} tweets!!!`));
-        console.log(chalk.yellow(`Failed to retweet ${errCounter} tweets. Most likely already tweeted them`));
-        console.log(chalk.red("====================================================="));
+
     }
 };
 var popular = (_TIME_POPULAR) => {
@@ -94,20 +95,18 @@ var popular = (_TIME_POPULAR) => {
         T.post('statuses/retweet/:id', {
             id: retweetID
         }, (err, data, response) => {
-            if (response) {
-                counter++;
+            if (err) {
+                ++errCounter;
+                console.log("An error occured when trying to retweet (The tweet probably already exsists)");
+            } else if (response) {
+                ++Passcounter;
                 console.log("Retweeted tweet: " + retweetID);
             }
-            if (err) {
-                errCounter++;
-                console.log("An error occured when trying to retweet (The tweet probably already exsists)");
-
-            }
+            console.log(chalk.red("====================================================="));
+            console.log(chalk.green(`Retweeted a total of: ${Passcounter} tweets!!!`));
+            console.log(chalk.yellow(`Failed to retweet ${errCounter} tweets. Most likely already tweeted them`));
+            console.log(chalk.red("====================================================="));
         });
-        console.log(chalk.red("====================================================="));
-        console.log(chalk.green(`Retweeted a total of: ${Passcounter} tweets!!!`));
-        console.log(chalk.yellow(`Failed to retweet ${errCounter} tweets. Most likely already tweeted them`));
-        console.log(chalk.red("====================================================="));
     }
 };
 
