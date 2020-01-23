@@ -5,11 +5,13 @@ const T = new twit(config);
 const chalk = require('chalk');
 
 var recent = (_TIME_RECENT) => {
+    var Passcounter = 0;
+    var errCounter = 0;
 
     // START OF RECENT Retweets
     const params = {
         q: '#100DaysOfCode OR #Nodejs OR #GameDev OR #100DaysOfCode OR #Programming OR #c++ OR #C# OR #Unity OR #UnrealEngine OR #Coding OR #JS OR #Javascript OR #WebDev',
-        count: 15,
+        count: 1,
         result_type: 'recent',
         lang: 'en'
     }
@@ -27,18 +29,26 @@ var recent = (_TIME_RECENT) => {
                 for (let dat of tweets) {
                     let retweetID = dat.id_str;
                     postTweet(retweetID);
-                }
+                    if (tweets.length -1 === 0) {
+                        CheckTotals();
+                    }
+                }              
             } else {
                 console.log("ERROR");
                 console.log(err);
 
             }
+
+           function CheckTotals() {
+            console.log(chalk.red("====================================================="));
+            console.log(chalk.green(`Retweeted a total of: ${Passcounter} tweets!!!`));
+            console.log(chalk.yellow(`Failed to retweet ${errCounter} tweets. Most likely already tweeted them`));
+            console.log(chalk.red("====================================================="));
+            }
         });
     }
     //TODO add sum of counters in another function that runs after the loop.
     function postTweet(retweetID) {
-        let Passcounter = 0;
-        let errCounter = 0;
         T.post('statuses/retweet/:id', {
             id: retweetID
         }, (err, data, response) => {
@@ -49,10 +59,6 @@ var recent = (_TIME_RECENT) => {
                 ++Passcounter;
                 console.log("Retweeted tweet: " + retweetID);
             }
-            console.log(chalk.red("====================================================="));
-            console.log(chalk.green(`Retweeted a total of: ${Passcounter} tweets!!!`));
-            console.log(chalk.yellow(`Failed to retweet ${errCounter} tweets. Most likely already tweeted them`));
-            console.log(chalk.red("====================================================="));
         });
 
     }
@@ -74,6 +80,8 @@ var popular = (_TIME_POPULAR) => {
     setInterval(retweet, _TIME_POPULAR);
 
     function searchTweets(params) {
+        var Passcounter = 0;
+        var errCounter = 0;
         T.get('search/tweets', params, (err, data, response) => {
             let tweets = data.statuses;
             if (!err) {
@@ -81,11 +89,18 @@ var popular = (_TIME_POPULAR) => {
                     let retweetID = dat.id_str;
                     postTweet(retweetID);
                 }
+                CheckTotals();
             } else {
                 console.log("ERROR");
                 console.log(err);
 
             }
+            function CheckTotals() {
+                console.log(chalk.red("====================================================="));
+                console.log(chalk.green(`Retweeted a total of: ${Passcounter} tweets!!!`));
+                console.log(chalk.yellow(`Failed to retweet ${errCounter} tweets. Most likely already tweeted them`));
+                console.log(chalk.red("====================================================="));
+                }
         });
     }
 
